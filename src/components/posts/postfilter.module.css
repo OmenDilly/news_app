@@ -1,0 +1,10 @@
+.postFilter{
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+}
+
+.postFilter .searchInput {
+  flex: 1;
+}

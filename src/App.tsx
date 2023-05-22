@@ -4,6 +4,7 @@ import cover from './assets/IMG_9166.jpg';
 import catImage from './assets/IMG_4634.jpg'
 import NavBar from "./components/ui/navbar/NavBar";
 import { useState } from "react";
+import PostPage from "./components/posts/PostsPage";
 
 const defailtPosts: Post[] = [
   new Post(
@@ -24,9 +25,10 @@ function App() {
 
   return (
     <div className="app">
-      <NavBar setPosts={setPosts}/>
-      <PostList
+      <NavBar/>
+      <PostPage
         posts={posts}
+        setPosts={setPosts}
       />
     </div>
   );

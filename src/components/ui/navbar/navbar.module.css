@@ -8,7 +8,7 @@
   align-items: center;
   padding: 1rem;
   justify-content: space-between;
-  background-color: rgb(255, 250, 246);
+  background-color: var(--card-background);
   -webkit-box-shadow: 0px 4px 10px 0px rgba(34, 60, 80, 0.05);
   -moz-box-shadow: 0px 4px 10px 0px rgba(34, 60, 80, 0.05);
   box-shadow: 0px 4px 10px 0px rgba(34, 60, 80, 0.05);

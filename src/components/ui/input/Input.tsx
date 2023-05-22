@@ -3,7 +3,7 @@ import classes from './input.module.css'
 
 type InputProps = InputHTMLAttributes<HTMLInputElement>;
 
-const Input: FC<InputProps> = ({children, ...props}) => {
+const Input: FC<InputProps> = (props) => {
   return (
     <input
       {...props}

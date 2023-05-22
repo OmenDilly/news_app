@@ -1,6 +1,8 @@
 .btn {
   text-decoration: none;
   padding: .6rem 1rem;
+  display: flex;
+  align-items: center;
   border: none;
   cursor: pointer;
   background-color: bisque;
