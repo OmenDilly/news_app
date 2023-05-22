@@ -1,0 +1,5 @@
+.input {
+  padding: .4rem;
+  border: 1px solid var(--text-color);
+  color: var(--text-color);
+}

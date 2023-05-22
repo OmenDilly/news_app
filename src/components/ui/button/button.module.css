@@ -1,0 +1,20 @@
+.btn {
+  text-decoration: none;
+  padding: .6rem 1rem;
+  border: none;
+  cursor: pointer;
+  background-color: bisque;
+  color: var(--text-color);
+  border-radius: var(--radius);
+  transition: all .2s ease-in-out;
+  font-weight: 600;
+}
+
+.btn:hover {
+  background-color: rgb(243, 213, 175);
+  transform: scale(1.04);
+}
+
+.btn:active {
+  transform: scale(1);
+}

@@ -1,0 +1,22 @@
+.postList {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: 1rem;
+  width: 70%;
+  margin-top: 200px;
+  /* justify-content: center; */
+
+}
+
+.postListHeader {
+  color: var(--text-color)
+}
+
+.postListItems {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-height: 60%;
+  padding: 1rem 0;
+}

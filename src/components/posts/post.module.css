@@ -1,0 +1,50 @@
+:root {
+  --body-lines: 3;
+}
+
+.postCard {
+  display: flex;
+  padding: 1rem;
+  background-color: rgb(255, 238, 213);
+  border-radius: var(--radius);
+  border: 1px solid var(--text-color);
+  gap: 1rem;
+}
+
+.postCardCover {
+  width: 18%;
+  resize:vertical;
+  position: relative;
+  border-radius: var(--radius);
+}
+
+.postCardCover img {
+  height: 100%;
+  position: absolute;
+  /* width: 18%; */
+  border-radius: var(--radius);
+}
+
+.postCardContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.postCardSubtitle {
+  color:rgb(167, 145, 113)
+}
+
+.postCardTitle {
+  color:var(--text-color)
+}
+
+.postCardBody {
+  color:var(--text-color);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  -webkit-line-clamp: var(--body-lines);
+  line-clamp: var(--body-lines);
+  /* max-height: 4em; */
+  text-overflow: ellipsis;
+}
