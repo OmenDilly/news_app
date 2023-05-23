@@ -1,5 +1,5 @@
 import React, {FC, SetStateAction} from 'react'
-import SearchInput from '../ui/searchinput/SearchInput'
+import SearchInput from '../ui/searchInput/SearchInput'
 import Dropdown from '../ui/dropdown/Dropdown'
 import classes from './postfilter.module.css'
 
@@ -16,8 +16,8 @@ const sortOptions = [
     title: 'title'
   },
   {
-    value: 'id',
-    title: 'id'
+    value: 'created',
+    title: 'created'
   },
 ]
 
@@ -34,7 +34,7 @@ const PostFilter: FC<PostFilterProps> = ({filter, setFilter}) => {
         defaultOption='Sort by'
         options={sortOptions}
         value={filter.sort}
-        onChange={(sort) => setFilter(prevFilter => ({...prevFilter, sort}))}
+        onChange={(sort) => setFilter(prevFilter => ({...prevFilter, sort: sort}))}
       />
     </div>
   )

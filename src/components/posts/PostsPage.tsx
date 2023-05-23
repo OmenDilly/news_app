@@ -1,4 +1,4 @@
-import React, { FC, useMemo, SetStateAction } from 'react'
+import React, { FC, useMemo, SetStateAction, useEffect } from 'react'
 import { Post } from '../../models/Post'
 import PostItem from './PostItem';
 import classes from './postlist.module.css'
@@ -7,6 +7,12 @@ import { useState } from 'react';
 import PostFilter, { Filter } from './PostFilter';
 import PostList from './PostList';
 import Modal from '../ui/modal/Modal';
+import Button from '../ui/button/Button';
+import { usePosts } from '../../hooks/usePosts';
+import axios from 'axios';
+import cover from '../../assets/IMG_4634.jpg'
+import PostService from '../../API/PostService';
+import ActivityIndicator from '../ui/activityIndicator/ActivityIndicator';
 
 interface PostPageProps {
   posts: Post[];
@@ -22,35 +28,28 @@ const PostPage: FC<PostPageProps> = ({posts, setPosts}) => {
 
   const [filter, setFilter] = useState<Filter>(defaultFilter)
 
-  const sortedPosts = useMemo(() => {
-    if (filter.sort) {
-      return (
-        [...posts]
-          .sort((a: Post, b: Post) => {
-            const propA = a[filter.sort as keyof Post];
-            const propB = b[filter.sort as keyof Post];
-        
-            if (typeof propA === "string" && typeof propB === "string") {
-              return propA.localeCompare(propB);
-            }
-        
-            if (propA && propB) {
-              return propA < propB ? -1 : propA > propB ? 1 : 0;
-            }
-        
-            return 0
-          })
-      )
-    }
-    return posts
-  }, [filter.sort, posts])
+  const [modalVisible, setModalVisible] = useState<boolean>(false)
 
-  const sortedAndSearchedPosts = useMemo(() => {
-    return sortedPosts.filter(post => post.title.toLocaleLowerCase().includes(filter.search.toLocaleLowerCase()))
-  }, [filter.search, sortedPosts])
+  const sortedAndSearchedPosts = usePosts(posts, filter.sort, filter.search)
+
+  const [postsLoading, setPostsLoading] = useState<boolean>(false)
+
+  async function getPosts() {
+    setPostsLoading(true)
+    setTimeout(async () => {
+      const newPosts = await PostService.getAll()
+      setPosts(prevPosts => [...prevPosts, ...newPosts])
+      setPostsLoading(false)
+    }, 1000)
+  }
+
+  useEffect(() => {
+    getPosts()
+  }, [])
 
   function createPost(newPost: Post) {
     setPosts(prevPosts => [...prevPosts, newPost])
+    setModalVisible(false)
   }
 
   function removePost(removedPost: Post) {
@@ -63,6 +62,8 @@ const PostPage: FC<PostPageProps> = ({posts, setPosts}) => {
     >
       <Modal
         title='New post'
+        visible={modalVisible}
+        setVisible={setModalVisible}
       >
         <PostForm
           create={createPost}
@@ -72,16 +73,31 @@ const PostPage: FC<PostPageProps> = ({posts, setPosts}) => {
         <h1>
           Posts
         </h1>
-
+        <Button
+          onClick={() => setModalVisible(true)}
+        >
+          <span className="material-icons md-18">
+            add
+          </span>
+          New Post
+        </Button>
       </div>
       <PostFilter
         filter={filter}
         setFilter={setFilter}
       />
-      <PostList
-        posts={sortedAndSearchedPosts}
-        removePost={removePost}
-      />
+      {
+        postsLoading
+        ?
+        <ActivityIndicator
+          loading={postsLoading}
+        />
+        :
+        <PostList
+          posts={sortedAndSearchedPosts}
+          removePost={removePost}
+        />
+      }
     </div>
   )
 }

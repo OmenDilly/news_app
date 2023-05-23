@@ -3,7 +3,6 @@ import Button from '../button/Button'
 import classes from './navbar.module.css'
 import Input from '../input/Input'
 import { Post } from '../../../models/Post'
-import usePosts from '../../hooks/usePosts'
 import PostForm from '../../posts/PostForm'
 
 interface NavBarProps {

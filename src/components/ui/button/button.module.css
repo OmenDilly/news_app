@@ -3,6 +3,7 @@
   padding: .6rem 1rem;
   display: flex;
   align-items: center;
+  justify-content: center;
   border: none;
   cursor: pointer;
   background-color: bisque;
@@ -12,11 +13,26 @@
   font-weight: 600;
 }
 
+.btn.text {
+  background: none;
+  padding: 0;
+}
+
+.btn.text:hover {
+  color: rgb(219, 167, 99);
+  background: none;
+  /* transform: scale(1.04); */
+}
+
+.btn.text:active {
+  /* transform: scale(1); */
+}
+
 .btn:hover {
   background-color: rgb(243, 213, 175);
-  transform: scale(1.04);
+  /* transform: scale(1.04); */
 }
 
 .btn:active {
-  transform: scale(1);
+  /* transform: scale(1); */
 }

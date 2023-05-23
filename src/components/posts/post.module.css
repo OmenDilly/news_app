@@ -13,8 +13,19 @@
 
 .postCardCover {
   width: 18%;
-  /* position: relative; */
+  position: relative;
+  height: 120px;
+  overflow: hidden;
   border-radius: var(--radius);
+}
+
+.postCardCover img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* object-fit: cover; */
 }
 
 .postCardContent {
@@ -46,4 +57,22 @@
   line-clamp: var(--body-lines);
   /* max-height: 4em; */
   text-overflow: ellipsis;
+}
+
+.post-enter {
+  opacity: 0
+}
+
+.post-enter-active {
+  opacity: 1;
+  transition: opacity .2s ease-in;
+}
+
+.post-exit {
+  opacity: 1;
+}
+
+.post-exit-active {
+  opacity: 0;
+  transition: opacity .2s ease-out;
 }

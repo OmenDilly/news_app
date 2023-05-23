@@ -11,7 +11,7 @@ interface PostItemProps {
 
 const PostItem: FC<PostItemProps> = ({post, onClick, remove}) => {
 
-  const {title, body, cover, created} = post
+  const {title, body, url, created} = post
 
   return (
     <div
@@ -19,7 +19,10 @@ const PostItem: FC<PostItemProps> = ({post, onClick, remove}) => {
       onClick={onClick}
     >
       {
-        cover && <img className={classes.postCardCover} src={cover}/>
+        url && 
+          <div className={classes.postCardCover}>
+            <img src={url}/>
+          </div>
       }
       <div className={classes.postCardContent}>
         <div className={classes.postCardHeader}>

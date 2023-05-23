@@ -3,6 +3,7 @@ import Input from '../ui/input/Input'
 import Button from '../ui/button/Button'
 import { Post } from '../../models/Post';
 import classes from './postform.module.css'
+import RichInput from '../ui/input/RichInput';
 
 interface PostFormProps {
   create: (newPost: Post) => void;
@@ -21,7 +22,7 @@ const PostForm: FC<PostFormProps> = ({create}) => {
 
   function addPost(event: ButtonClick) {
     event.preventDefault()
-    const newPost = new Post(post.title, post.body, null)
+    const newPost = new Post(post.title, post.body, '')
     create(newPost)
     setPost(defaultPost)
   }
@@ -35,7 +36,7 @@ const PostForm: FC<PostFormProps> = ({create}) => {
         onChange={({target}) => setPost(prev => ({...prev, title: target.value}))}
         placeholder='Enter title'
       />
-      <Input
+      <RichInput
         value={post.body}
         onChange={({target}) => setPost(prev => ({...prev, body: target.value}))}
         placeholder='Enter body'
@@ -43,7 +44,7 @@ const PostForm: FC<PostFormProps> = ({create}) => {
       <Button
         onClick={addPost}
       >
-        New Post
+        Create
       </Button>  
     </form>
   )

@@ -1,0 +1,22 @@
+:root {
+  --size: 20px;
+}
+
+.activityIndicator {
+  width: var(--size);
+  height: var(--size);
+  align-self: center;
+  justify-self: center;
+  border-radius: 50%;
+  border: 4px dashed var(--text-color);
+  animation: rotate 1s infinite linear;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  } 
+  to {
+    transform: rotate(360deg);
+  }
+}
